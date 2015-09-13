@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        {% load staticfiles %}
+    <meta charset="UTF-8">
+    <title>Images</title>
+        <!-- Bootstrap core CSS -->
+    <link href="{% static "blog/css/bootstrap.min.css" %}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{% static "blog/css/blog.css" %}" rel="stylesheet">
+        <link href="{% static "blog/css/carousel.css" %}" rel="stylesheet">
+</head>
+<body>
+{% block header %}
+    {% include "blog/header.html" %}
+{% endblock %}
+
+{% for image in images %}
+    <div class="img-thumbnail" style="margin-right: 10px; margin-bottom: 10px">
+        <a target="_blank" href="../{{ image.image.url }}">
+            <img src="../{{ image.image.url }}" alt="Image de la galerie" height="150" width="150"/>
+        </a>
+    </div>
+{% endfor %}
+
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="{% static "blog/js/bootstrap.min.js" %}"></script>
+</body>
+</html>

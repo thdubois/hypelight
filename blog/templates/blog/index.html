@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        {% load staticfiles %}
+    <meta charset="UTF-8">
+    <title>Acceuil</title>
+        <!-- Bootstrap core CSS -->
+    <link href="{% static "blog/css/bootstrap.min.css" %}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{% static "blog/css/blog.css" %}" rel="stylesheet">
+        <link href="{% static "blog/css/carousel.css" %}" rel="stylesheet">
+
+</head>
+<body>
+
+{% block header %}
+    {% include "blog/header.html" %}
+{% endblock %}
+
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img src="{% static "blog/img/photogroupe.jpg" %}" alt="First slide">
+        </div>
+        <div class="item">
+          <img src="{% static "blog/img/concert.jpg" %}" alt="Third slide">
+        </div>
+      </div>
+    </div><!-- /.carousel -->
+
+
+      <div class="blog-header">
+        <div class="row">
+                <div class="col-sm-8 blog-main">
+                    {% for article in articles_index %}
+                        <div class="blog-post">
+                        <h2 class="blog-post-title">{{ article.title }}</h2>
+                        <p class="blog-post-meta">{{ article.pub_date }} by <a href="#">{{ article.author }}</a></p>
+                        <p>{{ article.text  }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+        </div>
+      </div>
+
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="{% static "blog/js/bootstrap.min.js" %}"></script>
+</body>
+</html>
